@@ -12,14 +12,14 @@
   <body>
     <nav>
       <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.name %></strong>
-        <%= link_to 'Edit profile', edit_user_registration_path %> |
-        <%= link_to 'Users', users_path %> |
-        <%= link_to 'Books', books_path %> |
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+        【ユーザー名: <strong><%= current_user.name %></strong>】
+        <%= link_to t('views.users.user_edit'), edit_user_registration_path %> |
+        <%= link_to t('views.users.user_index'), users_path %> |
+        <%= link_to t('views.books.book_index'), books_path %> |
+        <%= link_to t('views.common.logout'), destroy_user_session_path, method: :delete %>
       <% else %>
-        <%= link_to 'Sign up', new_user_registration_path %> |
-        <%= link_to 'Login', new_user_session_path %>
+        <%= link_to t('views.common.sign_up'), new_user_registration_path %> |
+        <%= link_to t('views.common.login'), new_user_session_path %>
       <% end %>
     </nav>
     <p class="notice"><%= notice %></p>
