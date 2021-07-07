@@ -7,8 +7,7 @@ class UsersController < ApplicationController
     @users = User.with_attached_avatar.order(:id).page(params[:page])
   end
 
-  def show
-  end
+  def show; end
 
   def followers
     @followers = @user.follower_users
