@@ -10,7 +10,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @report.user_id %>
+  <%= @report.user.name %>
 </p>
 
 <% if current_user.id == @report.user_id %>
