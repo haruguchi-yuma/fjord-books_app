@@ -224,6 +224,8 @@ ja:
       previous: '前'
       next: '次'
       truncate: '...'
+    comments:
+      zero: コメントはまだありません。
   layouts:
     application:
       menu: メニュー
