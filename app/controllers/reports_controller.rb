@@ -5,7 +5,7 @@ class ReportsController < ApplicationController
   before_action :correct_user, only: %i[edit destroy]
   # GET /reports or /reports.json
   def index
-    @reports = Report.all
+    @reports = Report.order(:id).page(params[:page])
   end
 
   # GET /reports/1 or /reports/1.json
