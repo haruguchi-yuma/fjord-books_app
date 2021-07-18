@@ -3,7 +3,7 @@
 require 'test_helper'
 
 class ReportTest < ActiveSupport::TestCase
-  test "#editable?" do
+  test '#editable?' do
     @alice = users(:Alice)
     @bob = users(:Bob)
     @report = reports(:one)
@@ -12,7 +12,7 @@ class ReportTest < ActiveSupport::TestCase
     assert @report.editable?(@alice)
   end
 
-  test "#created_on" do
+  test '#created_on' do
     @report = reports(:one)
     @report.created_at = 'Sat, 17 Jul 2021 14:16:52.298299000 JST +09:00'
 
