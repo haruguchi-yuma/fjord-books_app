@@ -3,12 +3,12 @@
 class CommentsController < ApplicationController
   before_action :comment_params
   def create
-    @comment = p @commentable.comments.build(comment_params)
+    @comment = @commentable.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
       redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
-      redirect_to @commentable
+      render book_or_report_path
     end
   end
 
@@ -16,5 +16,13 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:body)
+  end
+
+  def book_or_report_path
+    if @book
+      'books/show'
+    elsif @report
+      'reports/show'
+    end
   end
 end
