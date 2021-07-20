@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
-      render book_or_report_path
+      render show_path
     end
   end
 
@@ -18,11 +18,7 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:body)
   end
 
-  def book_or_report_path
-    if @book
-      'books/show'
-    elsif @report
-      'reports/show'
-    end
+  def show_path
+    raise NotImplementError
   end
 end

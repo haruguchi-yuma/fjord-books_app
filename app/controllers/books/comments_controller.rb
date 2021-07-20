@@ -2,15 +2,15 @@
 
 class Books::CommentsController < CommentsController
   before_action :set_commentable
-  before_action :set_book
 
   private
 
   def set_commentable
     @commentable = Book.find(params[:book_id])
+    @book = @commentable
   end
 
-  def set_book
-    @book = @commentable
+  def show_path
+    'books/show'
   end
 end
