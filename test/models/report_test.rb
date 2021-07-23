@@ -6,14 +6,14 @@ class ReportTest < ActiveSupport::TestCase
   test '#editable?' do
     @alice = users(:alice)
     @bob = users(:bob)
-    @report = reports(:one)
+    @report = reports(:by_alice)
 
     assert_not @report.editable?(@bob)
     assert @report.editable?(@alice)
   end
 
   test '#created_on' do
-    @report = reports(:one)
+    @report = reports(:by_alice)
     @report.created_at = 'Sat, 17 Jul 2021 14:16:52.298299000 JST +09:00'
 
     assert_not_equal 'Sat, 17 Jul 2021', @report.created_on
