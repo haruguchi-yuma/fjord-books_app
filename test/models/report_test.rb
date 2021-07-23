@@ -4,8 +4,8 @@ require 'test_helper'
 
 class ReportTest < ActiveSupport::TestCase
   test '#editable?' do
-    @alice = users(:Alice)
-    @bob = users(:Bob)
+    @alice = users(:alice)
+    @bob = users(:bob)
     @report = reports(:one)
 
     assert_not @report.editable?(@bob)

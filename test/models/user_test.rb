@@ -4,7 +4,7 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   test '#name_or_email' do
-    @user = users(:nameless)
+    @user = users(:no_name)
     assert_equal 'nameless@example.com', @user.name_or_email
 
     @user.name = 'Foo Bar'
@@ -12,8 +12,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test '#follow' do
-    @alice = users(:Alice)
-    @bob = users(:Bob)
+    @alice = users(:alice)
+    @bob = users(:bob)
 
     assert_not @alice.following?(@bob)
     @alice.follow(@bob)
@@ -21,8 +21,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test '#unfollow' do
-    @alice = users(:Alice)
-    @bob = users(:Bob)
+    @alice = users(:alice)
+    @bob = users(:bob)
 
     @alice.follow(@bob)
     assert @alice.following?(@bob)
@@ -31,8 +31,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test '#following?' do
-    @alice = users(:Alice)
-    @bob = users(:Bob)
+    @alice = users(:alice)
+    @bob = users(:bob)
 
     assert_not @alice.following?(@bob)
     Relationship.create!(following_id: @bob.id, follower_id: @alice.id)
@@ -40,8 +40,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test '#followed_by' do
-    @alice = users(:Alice)
-    @bob = users(:Bob)
+    @alice = users(:alice)
+    @bob = users(:bob)
 
     assert_not @alice.followed_by?(@bob)
     Relationship.create!(following_id: @alice.id, follower_id: @bob.id)
