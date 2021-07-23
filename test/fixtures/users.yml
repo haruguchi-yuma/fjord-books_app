@@ -15,4 +15,3 @@ Bob:
 nameless:
   email: nameless@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
-
