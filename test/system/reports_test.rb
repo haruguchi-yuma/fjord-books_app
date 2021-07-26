@@ -43,10 +43,11 @@ class ReportsTest < ApplicationSystemTestCase
 
   test 'destroying a Report' do
     visit reports_url
+    assert_text '今日の晩ごはん'
     page.accept_confirm do
       click_on '削除'
     end
-
+    assert_no_text '今日の晩ごはん'
     assert_text '日報が削除されました。'
   end
 end
