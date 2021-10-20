@@ -10,6 +10,20 @@
   </head>
 
   <body>
+    <nav>
+      <% if user_signed_in? %>
+        【ユーザー名: <strong><%= current_user.name %></strong>】
+        <%= link_to t('views.users.user_edit'), edit_user_registration_path %> |
+        <%= link_to t('views.users.user_index'), users_path %> |
+        <%= link_to t('views.books.book_index'), books_path %> |
+        <%= link_to t('views.common.logout'), destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to t('views.common.sign_up'), new_user_registration_path %> |
+        <%= link_to t('views.common.login'), new_user_session_path %>
+      <% end %>
+    </nav>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

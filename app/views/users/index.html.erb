@@ -1,0 +1,28 @@
+<h1><%= User.model_name.human %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= User.human_attribute_name(:name) %></th>
+      <th><%= User.human_attribute_name(:profile) %></th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.profile %></td>
+        <td><%= link_to t('views.common.show'), user %></td>
+        <% if current_user.id == user.id %>
+          <td><%= link_to t('views.common.edit'), edit_user_registration_path(user) %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @users %>
+
+<%= link_to t('views.common.back'), books_path %>
